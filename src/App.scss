@@ -38,6 +38,7 @@ header {
   @media screen and (max-width: 900px) {
     padding-left: 2rem;
     padding-right: 2rem;
+    height: 12rem;
   }
 }
 
@@ -147,6 +148,13 @@ main {
   margin-top: 3rem;
 }
 
+@media screen and (max-width: 900px) {
+  .countries {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
 .country {
   box-shadow: 0 0 5px #eee;
   border-radius: 5px;
@@ -156,6 +164,7 @@ main {
 
   &__details {
     padding: 1.5rem;
+    padding-bottom: 5rem;
 
     h2 {
       margin-bottom: 1rem;
