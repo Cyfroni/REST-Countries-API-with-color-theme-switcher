@@ -1,0 +1,67 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 4rem;
+  padding-right: 4rem;
+
+  box-shadow: 0 0 5px #eee;
+
+  height: 6rem;
+
+  button {
+    border: none;
+    background-color: transparent;
+  }
+}
+
+main {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+
+.countries {
+  display: grid;
+  align-items: end;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  row-gap: 4rem;
+  column-gap: 3rem;
+
+  margin-top: 3rem;
+}
+
+.country {
+  box-shadow: 0 0 5px #eee;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &__details {
+    padding: 1.5rem;
+
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    p {
+      font-weight: 300;
+      font-size: 1.4rem;
+    }
+    span {
+      font-weight: 500;
+    }
+  }
+  &__flag {
+    img {
+      width: 100%;
+    }
+  }
+}
