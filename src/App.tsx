@@ -45,28 +45,34 @@ function App() {
     <div className="App">
       <header>
         <h1>Where in the world?</h1>
-        <button>☾ Dark mode</button>
+        <button>Dark mode</button>
       </header>
       <main>
         <div className="actions">
-          <input
-            type="text"
-            placeholder="Search for a country"
-            value={countryFilter}
-            onChange={(e) => setCountryFilter(e.target.value)}
-          />
-          <select
-            name="regions"
-            id="regions"
-            onChange={(e) => setRegion(e.target.value)}
-          >
-            <option value="">Filter by Region</option>
-            {REGIONS.map((val) => (
-              <option value={val} key={val}>
-                {val}
+          <div className="actions__search">
+            <input
+              type="text"
+              placeholder="Search for a country..."
+              value={countryFilter}
+              onChange={(e) => setCountryFilter(e.target.value)}
+            />
+          </div>
+          <div className="actions__select">
+            <select
+              name="regions"
+              id="regions"
+              onChange={(e) => setRegion(e.target.value)}
+            >
+              <option value="" hidden>
+                Filter by Region
               </option>
-            ))}
-          </select>
+              {REGIONS.map((val) => (
+                <option value={val} key={val}>
+                  {val}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <div className="countries">
           {countriesFiltered.map((c) => (

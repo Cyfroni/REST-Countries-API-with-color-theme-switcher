@@ -2,36 +2,147 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 4rem;
-  padding-right: 4rem;
+  padding-left: 8rem;
+  padding-right: 8rem;
 
   box-shadow: 0 0 5px #eee;
 
-  height: 6rem;
+  height: 8rem;
+
+  h1 {
+    font-weight: 800;
+    font-size: 2.2rem;
+  }
 
   button {
     border: none;
     background-color: transparent;
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: #444;
+
+    &::before {
+      content: "\f186";
+      font: var(--fa-font-solid);
+      display: inline-block;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+
+      font-size: 1.6rem;
+      font-weight: 500;
+
+      margin-right: 0.5rem;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
 main {
-  padding-left: 4rem;
-  padding-right: 4rem;
+  padding-left: 8rem;
+  padding-right: 8rem;
+
+  @media screen and (max-width: 900px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 .actions {
   display: flex;
   justify-content: space-between;
   margin-top: 3rem;
+  color: #777;
+
+  input,
+  select {
+    border: none;
+    box-shadow: 0 0 5px #eee;
+    border-radius: 5px;
+    color: inherit;
+  }
+
+  &__search::before,
+  &__select::after {
+    font: var(--fa-font-solid);
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  &__search {
+    min-width: 40rem;
+    position: relative;
+
+    input {
+      padding: 1.5rem 5rem;
+      width: 100%;
+
+      &::placeholder {
+        font-weight: 600;
+        color: #aaa;
+      }
+    }
+
+    &::before {
+      content: "\f002";
+
+      position: absolute;
+      top: 45%;
+      transform: translateY(-50%);
+      left: 2rem;
+
+      font-size: 1.6rem;
+      color: #999;
+    }
+  }
+  &__select {
+    min-width: 20rem;
+    position: relative;
+
+    select {
+      padding: 1.5rem 2rem;
+      font-weight: 600;
+      width: 100%;
+      appearance: none;
+    }
+
+    &::after {
+      content: "\f107";
+
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 2rem;
+
+      font-size: 1.6rem;
+      color: #999;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .actions {
+    flex-direction: column;
+    gap: 4rem;
+    &__search {
+      min-width: unset;
+      width: 100%;
+    }
+    &__select {
+      width: 50%;
+    }
+  }
 }
 
 .countries {
   display: grid;
   align-items: end;
   grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
-  row-gap: 4rem;
-  column-gap: 3rem;
+  gap: 6rem;
 
   margin-top: 3rem;
 }
@@ -49,6 +160,7 @@ main {
     h2 {
       margin-bottom: 1rem;
       font-size: 2rem;
+      font-weight: 800;
     }
 
     p {
@@ -56,7 +168,7 @@ main {
       font-size: 1.4rem;
     }
     span {
-      font-weight: 500;
+      font-weight: 600;
     }
   }
   &__flag {
