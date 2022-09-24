@@ -1,6 +1,7 @@
 import React from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { Country as Countrytype } from "./Countries";
+import "./Country.scss";
 
 export const countryLoader = async ({ params }) => {
   let response = await fetch(
@@ -31,24 +32,67 @@ export const countryLoader = async ({ params }) => {
 
 export default function Country() {
   const country = (useLoaderData() as any).country;
+  const navigate = useNavigate();
+
   return (
-    <div>
-      <h2>{country.name}</h2>
-      <p>{country.officialName}</p>
-      <p>{country.population}</p>
-      <p>{country.region}</p>
-      <p>{country.subregion}</p>
-      <p>{country.capital}</p>
-      <p>{country.tld}</p>
-      <p>{country.currencies}</p>
-      <p>{country.languages}</p>
-      <ul>
-        {country.neighbours.map((n) => (
-          <li key={n}>
-            <Link to={`/countries/${n}`}>{n}</Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <button className="back-button" onClick={() => navigate(-1)}>
+        Back
+      </button>
+      <div className="country-full">
+        <div className="country-full__flag">
+          <img src={country.flag} alt="" />
+        </div>
+        <div className="country-full__header">
+          <h2>{country.name}</h2>
+        </div>
+        <div className="country-full__details">
+          <p>
+            <span className="country-full__label">Native Name:</span>
+            {country.officialName}
+          </p>
+          <p>
+            <span className="country-full__label">Populaton:</span>
+            {country.population}
+          </p>
+          <p>
+            <span className="country-full__label">Region:</span>
+            {country.region}
+          </p>
+          <p>
+            <span className="country-full__label">Sub Region:</span>
+            {country.subregion}
+          </p>
+          <p>
+            <span className="country-full__label">Capital:</span>
+            {country.capital}
+          </p>
+        </div>
+        <div className="country-full__details">
+          <p>
+            <span className="country-full__label">Top Level Domain:</span>
+            {country.tld}
+          </p>
+          <p>
+            <span className="country-full__label">Currencies:</span>
+            {country.currencies.join(", ")}
+          </p>
+          <p>
+            <span className="country-full__label">Languages:</span>
+            {country.languages.join(", ")}
+          </p>
+        </div>
+        <div className="country-full__neighbours">
+          <span className="country-full__label">Border Countries:</span>
+          <ul>
+            {country.neighbours.map((n) => (
+              <li key={n}>
+                <Link to={`/countries/${n}`}>{n}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </>
   );
 }
