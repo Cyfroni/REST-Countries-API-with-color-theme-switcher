@@ -1,9 +1,11 @@
-import React from "react";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
-import { Country as Countrytype } from "./Countries";
 import "./Country.scss";
 
-export const countryLoader = async ({ params }) => {
+type loaderParams = {
+  params: { countryName: string };
+};
+
+export const countryLoader = async ({ params }: loaderParams) => {
   let response = await fetch(
     `https://restcountries.com/v3.1/name/${params.countryName}`
   );
@@ -85,7 +87,7 @@ export default function Country() {
         <div className="country-full__neighbours">
           <span className="country-full__label">Border Countries:</span>
           <ul>
-            {country.neighbours.map((n) => (
+            {country.neighbours?.map((n) => (
               <li key={n}>
                 <Link to={`/countries/${n}`}>{n}</Link>
               </li>

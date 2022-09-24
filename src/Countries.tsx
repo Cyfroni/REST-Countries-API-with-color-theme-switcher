@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import "./App.scss";
+import "./Countries.scss";
 import CountryTile from "./CountryTile";
 
 export type Country = {
